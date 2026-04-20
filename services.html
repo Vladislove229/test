@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Услуги — FZRTATTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero { padding:72px 0 52px;border-bottom:1px solid #151515; }
+    .page-title { font-size:clamp(60px,10vw,130px); }
+    .page-title em { color:var(--red);font-family:'EB Garamond',serif;font-style:italic; }
+
+    .services-section { padding:72px 0; }
+    .services-grid { display:grid;grid-template-columns:1fr;gap:1px;background:#151515;border:1px solid #151515; }
+    .service-item {
+      background:var(--bg);padding:52px;
+      display:grid;grid-template-columns:120px 1fr;gap:52px;align-items:start;
+      transition:background .3s;position:relative;overflow:hidden;
+    }
+    .service-item::after {
+      content:'';position:absolute;top:0;left:0;width:3px;height:0;
+      background:var(--red);transition:height .5s ease;
+    }
+    .service-item:hover { background:#0d0d0d; }
+    .service-item:hover::after { height:100%; }
+    .service-num { font-family:'Unbounded',sans-serif;font-size:72px;font-weight:900;color:#181818;line-height:1;letter-spacing:-4px; }
+    .service-title { font-family:'Oswald',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:700;text-transform:uppercase;letter-spacing:-.5px;color:var(--white);margin-bottom:14px; }
+    .service-body { font-family:'EB Garamond',serif;font-size:18px;color:#aaa;line-height:1.75;margin-bottom:14px; }
+    .service-list { list-style:none;padding:0;margin:14px 0 26px; }
+    .service-list li { font-family:'EB Garamond',serif;font-size:17px;color:#888;padding:7px 0;border-bottom:1px solid #181818;display:flex;align-items:center;gap:12px; }
+    .service-list li::before { content:'—';color:var(--red);flex-shrink:0; }
+    .service-price { font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:var(--red);margin-bottom:22px;display:inline-flex;align-items:baseline;gap:8px; }
+    .service-price small { font-size:13px;font-weight:300;letter-spacing:2px;color:var(--muted);text-transform:uppercase; }
+
+    @media(max-width:800px) {
+      .service-item { grid-template-columns:1fr;gap:16px;padding:36px 24px; }
+      .service-num { font-size:48px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur-r"></div>
+<div class="progress" id="prog"></div>
+
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <img src="0001-0200.gif" alt=""/>
+    <!-- <div class="preloader-brand">FZR<span>.</span>TATTS</div> -->
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-dot"></span>FZRTATTS</a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="sketches.html" data-i18n="nav.sketches">Эскизы</a>
+      <a href="services.html" class="active" data-i18n="nav.services">Услуги</a>
+      <a href="certificate.html" data-i18n="nav.cert">Сертификат</a>
+      <a href="healing.html" data-i18n="nav.heal">Заживление</a>
+      <a href="#" class="accent book-btn" data-i18n="nav.book">Записаться</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switcher"><button class="lang-btn active" data-lang="ru">RU</button><button class="lang-btn" data-lang="en">EN</button></div>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="sec-eyebrow" data-i18n="services.sec">FZRTATTS</div>
+    <h1 class="page-title"><span data-i18n="services.title">Ус</span><em data-i18n="services.title.em">луги</em></h1>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="wrap">
+    <div class="services-grid">
+
+      <div class="service-item reveal">
+        <div class="service-num">01</div>
+        <div>
+          <h2 class="service-title" data-i18n="s1.title">Разработка эскиза</h2>
+          <p class="service-body" data-i18n="s1.body">Каждый эскиз разрабатывается индивидуально — с учётом пожеланий, места на теле и стиля. Без повторов.</p>
+          <ul class="service-list">
+            <li data-i18n="s1.li1">Учитываю стиль, тематику и все детали</li>
+            <li data-i18n="s1.li2">Адаптирую под выбранное место и размер</li>
+            <li data-i18n="s1.li3">Работаю с твоими референсами</li>
+            <li data-i18n="s1.li4">Могу переработать готовый эскиз в своём стиле</li>
+          </ul>
+          <div class="service-price"><span data-i18n="s1.price">Входит в стоимость</span> <small data-i18n="s1.price.note">сеанса</small></div>
+          <a href="#" class="btn book-btn"><span data-i18n="s1.btn">Обсудить эскиз</span></a>
+        </div>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">02</div>
+        <div>
+          <h2 class="service-title" data-i18n="s2.title">Татуировка</h2>
+          <p class="service-body" data-i18n="s2.body">Полный сеанс от обсуждения идеи до готовой работы. Одноразовые расходники, стерилизованное оборудование.</p>
+          <ul class="service-list">
+            <li data-i18n="s2.li1">Аренда студии</li>
+            <li data-i18n="s2.li2">Обсуждение идеи и разработка эскиза</li>
+            <li data-i18n="s2.li3">Выполнение татуировки</li>
+            <li data-i18n="s2.li4">Заживляющий набор в подарок</li>
+            <li data-i18n="s2.li5">Консультации по уходу в процессе заживления</li>
+          </ul>
+          <div class="service-price"><span data-i18n="s2.price">от 4 000 ₽</span> <small data-i18n="s2.price.note">минимум</small></div>
+          <a href="#" class="btn book-btn"><span data-i18n="s2.btn">Рассчитать стоимость</span></a>
+        </div>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">03</div>
+        <div>
+          <h2 class="service-title" data-i18n="s3.title">Сертификаты</h2>
+          <p class="service-body" data-i18n="s3.body">Отличный подарок близкому человеку. Электронный или в красивом конверте с лентой и стикерами.</p>
+          <ul class="service-list">
+            <li data-i18n="s3.li1">Физический — номинал от 3 000 ₽</li>
+            <li data-i18n="s3.li2">Электронный — любой номинал</li>
+            <li data-i18n="s3.li3">Действителен 6 месяцев</li>
+            <li data-i18n="s3.li4">Оформление за 1 день</li>
+          </ul>
+          <div class="service-price"><span data-i18n="s3.price">от 3 000 ₽</span></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#" class="btn book-btn"><span data-i18n="s3.btn1">Заказать сертификат</span></a>
+            <a href="certificate.html" class="btn"><span data-i18n="s3.btn2">Подробнее</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <span class="foot-left">© <span id="yr"></span> FZRTATTS</span>
+    <nav class="foot-nav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="certificate.html" data-i18n="nav.cert">Сертификат</a>
+      <a href="healing.html" data-i18n="nav.heal">Заживление</a>
+      <a href="https://t.me/" target="_blank">Telegram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="modal" id="bookModal">
+  <div class="modal-box">
+    <button class="modal-close" id="bookClose">×</button>
+    <h3 class="modal-title" data-i18n="modal.title">Запись на сессию</h3>
+    <form id="bookForm">
+      <div class="form-row"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required/></div>
+      <div class="form-row"><label data-i18n="modal.contact">Telegram или телефон</label><input type="text" name="contact" required/></div>
+      <div class="form-row"><label data-i18n="modal.idea">Опишите идею</label><textarea name="desc" required></textarea></div>
+      <button type="submit" class="btn primary form-submit"><span data-i18n="modal.submit">Отправить заявку</span></button>
+    </form>
+    <div class="form-msg" id="formMsg"></div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

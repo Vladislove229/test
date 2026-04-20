@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Заживление — FZRTATTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero { padding:72px 0 52px;border-bottom:1px solid #151515; }
+    .page-title { font-size:clamp(44px,7vw,100px); }
+    .page-title em { color:var(--red);font-family:'EB Garamond',serif;font-style:italic; }
+    .page-sub { font-family:'EB Garamond',serif;font-style:italic;font-size:18px;color:var(--muted);margin-top:14px;max-width:560px;line-height:1.65; }
+
+    .methods { padding:72px 0 48px; }
+    .methods-tabs { display:flex;gap:8px;margin-bottom:48px;flex-wrap:wrap; }
+    .tab-btn {
+      font-family:'Oswald',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+      padding:10px 22px;border-radius:var(--r);border:1px solid #222;
+      background:transparent;color:var(--muted);cursor:pointer;transition:all .25s;
+    }
+    .tab-btn.active { background:var(--red);border-color:var(--red);color:#000; }
+    .tab-btn:not(.active):hover { background:#1a1a1a;color:var(--white);border-color:#333; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    .steps { display:grid;grid-template-columns:1fr;gap:1px;background:#151515;border:1px solid #151515;margin-bottom:36px; }
+    .step-row {
+      background:var(--bg);padding:32px 40px;
+      display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;
+      transition:background .3s;
+    }
+    .step-row:hover { background:#0d0d0d; }
+    .step-day-num { font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;color:#1e1e1e;line-height:1; }
+    .step-day-unit { font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2a2a2a;display:block;margin-top:2px; }
+    .step-title { font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--white);margin-bottom:8px; }
+    .step-text { font-family:'EB Garamond',serif;font-size:17px;color:#888;line-height:1.7; }
+    .step-text strong { color:var(--red); }
+
+    .warning-block { border:1px solid rgba(232,37,26,.28);border-radius:var(--r);background:rgba(232,37,26,.04);padding:26px 30px; }
+    .warning-title { font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px; }
+    .warning-title::before { content:'!';width:22px;height:22px;border-radius:50%;background:var(--red);color:#000;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0; }
+    .warning-list { list-style:none;padding:0; }
+    .warning-list li { font-family:'EB Garamond',serif;font-size:17px;color:#999;padding:5px 0;display:flex;align-items:center;gap:10px; }
+    .warning-list li::before { content:'✕';color:var(--red);font-size:11px;flex-shrink:0; }
+
+    @media(max-width:600px) {
+      .step-row { grid-template-columns:1fr;gap:6px;padding:22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur-r"></div>
+<div class="progress" id="prog"></div>
+
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <img src="0001-0200.gif" alt=""/>
+    <!-- <div class="preloader-brand">FZR<span>.</span>TATTS</div> -->
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-dot"></span>FZRTATTS</a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="sketches.html" data-i18n="nav.sketches">Эскизы</a>
+      <a href="services.html" data-i18n="nav.services">Услуги</a>
+      <a href="certificate.html" data-i18n="nav.cert">Сертификат</a>
+      <a href="healing.html" class="active" data-i18n="nav.heal">Заживление</a>
+      <a href="#" class="accent book-btn" data-i18n="nav.book">Записаться</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switcher"><button class="lang-btn active" data-lang="ru">RU</button><button class="lang-btn" data-lang="en">EN</button></div>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="sec-eyebrow" data-i18n="heal.sec">Уход</div>
+    <h1 class="page-title"><span data-i18n="heal.title">Зажив</span><em data-i18n="heal.title.em">ление</em></h1>
+    <p class="page-sub" data-i18n="heal.sub">Заживление — такая же важная часть процесса, как само нанесение. Следуй инструкции — и татуировка будет яркой.</p>
+  </div>
+</section>
+
+<section class="methods">
+  <div class="wrap">
+    <div class="methods-tabs">
+      <button class="tab-btn active" data-tab="film" data-i18n="heal.tab1">Заживление плёнкой</button>
+      <button class="tab-btn" data-tab="diaper" data-i18n="heal.tab2">Заживление пелёнкой</button>
+    </div>
+
+    <!-- FILM -->
+    <div class="tab-panel active" id="tab-film">
+      <div class="steps reveal">
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.film.d1">1–3</div><span class="step-day-unit" data-i18n="heal.film.d1u">день</span></div>
+          <div><div class="step-title" data-i18n="heal.film.t1">Плёнка на месте</div><p class="step-text" data-i18n="heal.film.p1">Мастер наносит плёнку сразу после сеанса. Носи её 4 дня — не снимай раньше. На 2–3 день под плёнкой начнёт скапливаться сукровица — это нормально, процесс регенерации запущен.</p></div>
+        </div>
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.film.d2">4</div><span class="step-day-unit" data-i18n="heal.film.d2u">день</span></div>
+          <div><div class="step-title" data-i18n="heal.film.t2">Снять плёнку</div><p class="step-text" data-i18n="heal.film.p2">Снимай медленно под тёплой водой — оттягивающим движением. Промой мягкими движениями. Не три!</p></div>
+        </div>
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.film.d3">5–10</div><span class="step-day-unit" data-i18n="heal.film.d3u">день</span></div>
+          <div><div class="step-title" data-i18n="heal.film.t3">Пантенол 4 раза в день</div><p class="step-text" data-i18n="heal.film.p3">Наноси пантенол 4 раза в день тонким слоем. Держи увлажнённой. Зуд — нормально. Не чеши!</p></div>
+        </div>
+      </div>
+      <div class="warning-block reveal">
+        <div class="warning-title" data-i18n="heal.warn.title">Важно — запрещено</div>
+        <ul class="warning-list">
+          <li data-i18n="heal.warn.1">Чесать татуировку, отдирать корочки</li>
+          <li data-i18n="heal.warn.2">Принимать ванну, посещать баню / сауну</li>
+          <li data-i18n="heal.warn.3">Загорать и ходить в солярий</li>
+          <li data-i18n="heal.warn.4">Заниматься активным спортом первую неделю</li>
+          <li data-i18n="heal.warn.5">Использовать спиртосодержащие средства</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DIAPER -->
+    <div class="tab-panel" id="tab-diaper">
+      <div class="steps reveal">
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.diap.d1">1</div><span class="step-day-unit" data-i18n="heal.diap.d1u">этап</span></div>
+          <div><div class="step-title" data-i18n="heal.diap.t1">Первые 2–4 часа</div><p class="step-text" data-i18n="heal.diap.p1">После сеанса мастер очистит место, нанесёт заживляющее средство и укроет плёнкой. Носи 2–4 часа.</p></div>
+        </div>
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.diap.d2">2</div><span class="step-day-unit" data-i18n="heal.diap.d2u">этап</span></div>
+          <div><div class="step-title" data-i18n="heal.diap.t2">3 дня с пелёнкой</div><p class="step-text" data-i18n="heal.diap.p2">Сними первичную защиту. Промой прохладной водой с мылом. Нанеси мазь. Меняй пелёнку минимум 3 раза в день. Так 3 дня.</p></div>
+        </div>
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.diap.d3">3</div><span class="step-day-unit" data-i18n="heal.diap.d3u">этап</span></div>
+          <div><div class="step-title" data-i18n="heal.diap.t3">Без пелёнки + мазь</div><p class="step-text" data-i18n="heal.diap.p3">После 3 дней пелёнка не нужна. Мажь мазью 4 раза в день. Держи влажной. Защищай от влаги, грязи и солнца.</p></div>
+        </div>
+        <div class="step-row">
+          <div><div class="step-day-num" data-i18n="heal.diap.d4">4</div><span class="step-day-unit" data-i18n="heal.diap.d4u">этап</span></div>
+          <div><div class="step-title" data-i18n="heal.diap.t4">2–3 недели восстановления</div><p class="step-text" data-i18n="heal.diap.p4">Полное восстановление кожи. Продолжай использовать заживляющее средство ещё 2–3 недели.</p></div>
+        </div>
+      </div>
+      <div class="warning-block reveal">
+        <div class="warning-title" data-i18n="heal.warn.title">Важно — запрещено</div>
+        <ul class="warning-list">
+          <li data-i18n="heal.warn.1">Чесать татуировку, отдирать корочки</li>
+          <li data-i18n="heal.warn.2">Принимать ванну, посещать баню / сауну</li>
+          <li data-i18n="heal.warn.3">Загорать и ходить в солярий</li>
+          <li data-i18n="heal.warn.4">Заниматься активным спортом первую неделю</li>
+          <li data-i18n="heal.warn.5">Использовать спиртосодержащие средства</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <span class="foot-left">© <span id="yr"></span> FZRTATTS</span>
+    <nav class="foot-nav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="services.html" data-i18n="nav.services">Услуги</a>
+      <a href="https://t.me/" target="_blank">Telegram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="modal" id="bookModal">
+  <div class="modal-box">
+    <button class="modal-close" id="bookClose">×</button>
+    <h3 class="modal-title" data-i18n="modal.title">Запись на сессию</h3>
+    <form id="bookForm">
+      <div class="form-row"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required/></div>
+      <div class="form-row"><label data-i18n="modal.contact">Telegram или телефон</label><input type="text" name="contact" required/></div>
+      <div class="form-row"><label data-i18n="modal.idea">Опишите идею</label><textarea name="desc" required></textarea></div>
+      <button type="submit" class="btn primary form-submit"><span data-i18n="modal.submit">Отправить заявку</span></button>
+    </form>
+    <div class="form-msg" id="formMsg"></div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

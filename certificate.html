@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Сертификат — FZRTATTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+  <style>
+    .page-hero { padding:72px 0 52px;border-bottom:1px solid #151515; }
+    .page-title { font-size:clamp(48px,8vw,110px); }
+    .page-title em { color:var(--red);font-family:'EB Garamond',serif;font-style:italic; }
+
+    .cert-section { padding:72px 0; }
+    .cert-grid { display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; }
+
+    .cert-visual {
+      aspect-ratio:16/9;border-radius:12px;
+      background:linear-gradient(135deg,#111,#1a1a1a 40%,#0e0e0e);
+      border:1px solid #222;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:10px;padding:40px;text-align:center;position:relative;overflow:hidden;
+    }
+    .cert-visual::before { content:'';position:absolute;inset:10px;border:1px solid #242424;border-radius:8px;pointer-events:none; }
+    .cert-visual::after { content:'';position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(232,37,26,.08),transparent 70%); }
+    .cert-brand { font-family:'Unbounded',sans-serif;font-weight:900;font-size:26px;letter-spacing:-1px;color:var(--white); }
+    .cert-brand span { color:var(--red); }
+    .cert-divider { width:50px;height:1px;background:var(--red);margin:2px auto; }
+    .cert-tagline { font-family:'EB Garamond',serif;font-style:italic;font-size:15px;color:var(--muted); }
+    .cert-amount { font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;color:var(--red);letter-spacing:-1px;margin-top:6px; }
+
+    .cert-label-tag { font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px; }
+    .cert-label-tag::before { content:'';display:block;width:22px;height:1px;background:var(--red); }
+    .cert-heading { font-size:clamp(32px,4vw,52px);margin-bottom:18px; }
+    .cert-text { font-family:'EB Garamond',serif;font-size:18px;color:#aaa;line-height:1.75;margin-bottom:14px; }
+
+    .cert-formats { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 28px; }
+    .format-card { border:1px solid #1e1e1e;border-radius:var(--r);padding:20px 16px;transition:border-color .3s,transform .3s; }
+    .format-card:hover { border-color:#2a2a2a;transform:translateY(-3px); }
+    .format-icon { font-size:24px;margin-bottom:8px; }
+    .format-name { font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;color:var(--white); }
+    .format-desc { font-family:'EB Garamond',serif;font-size:15px;color:var(--muted);line-height:1.5; }
+
+    .terms-section { padding:0 0 72px; }
+    .terms-title { font-size:clamp(28px,3vw,44px);margin-bottom:32px; }
+    .terms-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
+    .term-card { border:1px solid #1a1a1a;border-radius:var(--r);padding:26px 20px;background:var(--paper); }
+    .term-num { font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:#1e1e1e;margin-bottom:10px; }
+    .term-text { font-family:'EB Garamond',serif;font-size:16px;color:#888;line-height:1.65; }
+
+    @media(max-width:800px) {
+      .cert-grid { grid-template-columns:1fr; }
+      .terms-grid { grid-template-columns:1fr; }
+      .cert-formats { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur-r"></div>
+<div class="progress" id="prog"></div>
+
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <img src="0001-0200.gif" alt=""/>
+    <!-- <div class="preloader-brand">FZR<span>.</span>TATTS</div> -->
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-dot"></span>FZRTATTS</a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="sketches.html" data-i18n="nav.sketches">Эскизы</a>
+      <a href="services.html" data-i18n="nav.services">Услуги</a>
+      <a href="certificate.html" class="active" data-i18n="nav.cert">Сертификат</a>
+      <a href="healing.html" data-i18n="nav.heal">Заживление</a>
+      <a href="#" class="accent book-btn" data-i18n="nav.book">Записаться</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switcher"><button class="lang-btn active" data-lang="ru">RU</button><button class="lang-btn" data-lang="en">EN</button></div>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="sec-eyebrow" data-i18n="cert.sec">Подарок</div>
+    <h1 class="page-title"><span data-i18n="cert.title">Серти</span><em data-i18n="cert.title.em">фикат</em></h1>
+  </div>
+</section>
+
+<section class="cert-section">
+  <div class="wrap cert-grid">
+    <div class="cert-visual reveal">
+      <div class="cert-brand">FZR<span>.</span>TATTS</div>
+      <div class="cert-divider"></div>
+      <div class="cert-tagline" data-i18n="cert.label">Подарочный сертификат</div>
+      <div class="cert-amount">3 000 ₽</div>
+    </div>
+    <div class="cert-content reveal reveal-d2">
+      <div class="cert-label-tag" data-i18n="cert.label">Подарок на татуировку</div>
+      <h2 class="cert-heading"><span data-i18n="cert.heading">Лучший</span><em class="script"> <span data-i18n="cert.heading.em">подарок</span></em></h2>
+      <p class="cert-text" data-i18n="cert.text1">Отличный вариант для друга или близкого человека. Сертификат даёт возможность получить уникальную татуировку по индивидуальному эскизу.</p>
+      <div class="cert-formats">
+        <div class="format-card">
+          <div class="format-name" data-i18n="cert.f1.name">Физический</div>
+          <div class="format-desc" data-i18n="cert.f1.desc">В плотном конверте с лентой и фирменными стикерами. От 3 000 ₽.</div>
+        </div>
+        <div class="format-card">
+          <div class="format-name" data-i18n="cert.f2.name">Электронный</div>
+          <div class="format-desc" data-i18n="cert.f2.desc">Любой номинал. Отправлю в мессенджер или на email.</div>
+        </div>
+      </div>
+      <a href="#" class="btn primary lg book-btn"><span data-i18n="cert.btn">Заказать сертификат</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="terms-section">
+  <div class="wrap">
+    <h2 class="terms-title reveal"><span data-i18n="cert.terms.title">Условия</span> <em class="script" data-i18n="cert.terms.em">использования</em></h2>
+    <div class="terms-grid">
+      <div class="term-card reveal"><div class="term-num">01</div><p class="term-text" data-i18n="cert.t1">Сертификат является средством оплаты. Может быть использован полностью или частично.</p></div>
+      <div class="term-card reveal reveal-d1"><div class="term-num">02</div><p class="term-text" data-i18n="cert.t2">При превышении суммы клиент доплачивает разницу. На наличные не обменивается.</p></div>
+      <div class="term-card reveal reveal-d2"><div class="term-num">03</div><p class="term-text" data-i18n="cert.t3">Действителен 6 месяцев с момента выдачи. После использования изымается мастером.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <span class="foot-left">© <span id="yr"></span> FZRTATTS</span>
+    <nav class="foot-nav">
+      <a href="index.html" data-i18n="nav.portfolio">Портфолио</a>
+      <a href="services.html" data-i18n="nav.services">Услуги</a>
+      <a href="https://t.me/" target="_blank">Telegram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="modal" id="bookModal">
+  <div class="modal-box">
+    <button class="modal-close" id="bookClose">×</button>
+    <h3 class="modal-title" data-i18n="cert.btn">Заказать сертификат</h3>
+    <form id="bookForm">
+      <div class="form-row"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required/></div>
+      <div class="form-row"><label data-i18n="modal.contact">Telegram или телефон</label><input type="text" name="contact" required/></div>
+      <div class="form-row"><label>Формат</label>
+        <select name="service">
+          <option data-i18n="cert.f2.name">Электронный</option>
+          <option data-i18n="cert.f1.name">Физический</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Номинал</label><input type="text" name="desc" placeholder="Например: 5 000 ₽" required/></div>
+      <button type="submit" class="btn primary form-submit"><span data-i18n="modal.submit">Отправить заявку</span></button>
+    </form>
+    <div class="form-msg" id="formMsg"></div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
